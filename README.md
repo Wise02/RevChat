@@ -39,7 +39,7 @@ This project is a real-time chatroom application built with Flask, designed to s
    ```bash
    python app.py
    ```
-   The application will be accessible at `http://localhost:87`.
+   The application will be accessible at `http://localhost:87` (you can change the IP and PORT in the `.py` file).
 
 ## Usage
 
