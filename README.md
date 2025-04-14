@@ -1,76 +1,99 @@
 **Rev-Chat: A Chatroom Reverse Shell**
 
-A real-time Flask chatroom with user authentication, secure password handling, and Socket.IO-based messaging—ideal for learning reverse shell concepts in a safe, interactive environment.
+Real-time Flask chatroom with user authentication, message history, and optional file delivery — ideal for learning reverse shell and C2-style communication.
 
 ---
 
-## Overview
+# RevChat
 
-This project is a real-time chatroom application built with Flask, designed to simulate reverse shell interactions. It incorporates user authentication, secure password storage, and real-time messaging using Flask-SocketIO. Ideal for cybersecurity enthusiasts looking to explore reverse shell concepts in a controlled setting.
+## 🔍 Overview
+RevChat is a Flask-based real-time chatroom designed for learning and simulating reverse shell communication concepts. It supports user authentication, secure password storage, message broadcasting, and even includes an optional file delivery system to mimic payload distribution in red-team scenarios.
 
-## Features
+## ✨ Features
 
-- **User Authentication**: Secure signup and login using Flask-Login and hashed passwords with Werkzeug.
-- **Real-Time Messaging**: Instant communication facilitated by Flask-SocketIO and Eventlet.
-- **Persistent Chat History**: Maintains a history of messages for new connections.
-- **Database Integration**: Utilizes SQLite with SQLAlchemy for efficient data management.
-- **Web Interface**: Clean and intuitive HTML templates for login, signup, and chat functionalities.
+- 🔐 **User Authentication**
+  - Login and signup pages with session management
+  - Passwords hashed using Werkzeug
+  - IP banning on brute-force attempts (in `server.py`)
 
-## Installation
+- 💬 **Real-Time Chatroom**
+  - Flask-SocketIO with Eventlet for asynchronous messaging
+  - Broadcasts messages to all connected users
+  - Sends chat history to new connections
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/chatroom-reverse-shell.git
-   cd chatroom-reverse-shell
-   ```
+- 💾 **File Delivery (Optional)**
+  - `server.py` serves `driver.exe` after login, simulating payload access
+  - HTML download interface included
 
-2. **Create a Virtual Environment**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+- 🧠 **Pentesting-Lab Friendly**
+  - Built for ethical hacking labs or secure internal testing
 
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-4. **Run the Application**:
-   ```bash
-   python app.py
-   ```
-   The application will be accessible at `http://localhost:87` (you can change the IP and PORT in the `.py` file).
-
-## Usage
-
-- Navigate to `http://localhost:87` in your web browser.
-- Register a new account or log in with existing credentials.
-- Access the chatroom to start real-time messaging.
-
-## Project Structure
+## 📁 File Structure
 
 ```
-chatroom-reverse-shell/
-├── app.py
-├── requirements.txt
-├── templates/
-│   ├── login.html
-│   ├── signup.html
-│   └── chat.html
-└── README.md
+RevChat/
+├── revchat.py           # Full app with Flask-Login and SQLite database
+├── server.py            # Lighter version with memory-only user tracking & IP ban
+├── requirements.txt     # All dependencies listed here
+├── banned_ips.txt       # Auto-generated for IP banning (optional)
+├── driver.exe           # Optional file for test delivery
+└── templates/           # HTML UI templates
+    ├── login.html
+    ├── signup.html
+    ├── chat.html
+    └── driver.html
 ```
 
-## Dependencies
+---
 
-- Flask
-- Flask-SocketIO
-- Flask-Login
-- Flask-SQLAlchemy
-- Eventlet
-- Werkzeug
+## 🚀 Setup Instructions
 
-Ensure all dependencies are listed in your `requirements.txt` file.
+### 1. Clone the Repository
 
-## License
+```bash
+git clone https://github.com/yourusername/RevChat.git
+cd RevChat
+```
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+### 2. Create Virtual Environment (Optional but Recommended)
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the App
+
+#### 1. BACKEND - this will handle all logic, connections and local files
+```bash
+python revchat.py
+```
+- Runs on `http://0.0.0.0:87`
+- Requires templates and creates `users.db`
+
+#### 2. FRONTEND - this will handle the interface, HTML pages, IPs, and more.
+```bash
+python server.py
+```
+- Runs on `http://0.0.0.0:80`
+- Requires `driver.exe` in root folder
+
+---
+
+## 🛡️ Legal
+
+**For educational use only.** Do not deploy or test this software on unauthorized systems or networks.
+
+---
+
+## 📜 License
+
+MIT License – use it freely with credit.
