@@ -1,9 +1,3 @@
-**Rev-Chat: A Chatroom Reverse Shell**
-
-Real-time Flask chatroom with user authentication, message history, and optional file delivery — ideal for learning reverse shell and C2-style communication.
-
----
-
 # RevChat
 
 ## 🔍 Overview
@@ -30,24 +24,6 @@ RevChat is a Flask-based real-time chatroom designed for learning and simulating
 
 ---
 
-## 📁 File Structure
-
-```
-RevChat/
-├── revchat.py           # Full app with Flask-Login and SQLite database
-├── server.py            # Lighter version with memory-only user tracking & IP ban
-├── requirements.txt     # All dependencies listed here
-├── banned_ips.txt       # Auto-generated for IP banning (optional)
-├── driver.exe           # Optional file for test delivery
-└── templates/           # HTML UI templates
-    ├── login.html
-    ├── signup.html
-    ├── chat.html
-    └── driver.html
-```
-
----
-
 ## 🚀 Setup Instructions
 
 ### 1. Clone the Repository
@@ -61,7 +37,7 @@ cd RevChat
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+source venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
