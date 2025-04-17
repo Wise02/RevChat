@@ -1,4 +1,4 @@
-# RevChat
+# RevChat 
 
 ## 🔍 Overview
 RevChat is a Flask-based real-time chatroom designed for learning and simulating reverse shell communication concepts. It supports user authentication, secure password storage, message broadcasting, and even includes an optional file delivery system to mimic payload distribution in red-team scenarios.
